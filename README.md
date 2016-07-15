@@ -4,6 +4,15 @@ md5db
 Creates a database of md5 hashes from a word list. My purpose behind creating this was
 I needed a list of md5 hashes from a word file. 
 
+### Building
+    $ cabal configure
+    $ cabal build
+    $ cabal run
+     
+      or
+
+    $ ./dist/build/md5b/md5b
+
 ### Word lists
 Put each word on its own line.
 

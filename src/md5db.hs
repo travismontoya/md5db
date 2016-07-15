@@ -45,7 +45,7 @@ saveDB m              = do withFile "md5db" WriteMode (\db -> do
 --
 ----------------------------------------------------------------------------------------------
 parseArgs             :: [[Char]] -> IO ()        
-parseArgs ("run":xs)  = runMD5db $ last xs
+parseArgs ("run":s)   = runMD5db $ last s
 parseArgs ("md5":s)   = B.putStrLn $ showMD5 s
 parseArgs _           = printUsage
 
