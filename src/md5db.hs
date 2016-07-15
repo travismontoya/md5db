@@ -1,7 +1,9 @@
 ----------------------------------------------------------------------------------------------
+--
 -- md5db.hs - Creates databases of md5 hashes from a word file, allows searching for hashes.
 -- July, 15th, 2016
 -- Copyright (C) 2016 Travis Montoya
+--
 ----------------------------------------------------------------------------------------------
 module Main where
 
@@ -30,8 +32,8 @@ runMD5db f            = do withFile f ReadMode (\wf -> do
                               w        <- hGetContents wf
                               let md5s = zip (lines w) hashedWords
                                    where hashedWords = map md5Str (lines w)
-                              saveDB md5s
-                              putStrLn "Saving database...")
+                              putStrLn ("Saving database...")
+                              saveDB md5s)
 
 saveDB                :: [([Char], Digest MD5)] -> IO ()
 saveDB m              = do withFile "md5db" WriteMode (\db -> do
