@@ -46,7 +46,6 @@ saveDB m              = do withFile "md5db" WriteMode (\db -> do
 ----------------------------------------------------------------------------------------------
 parseArgs             :: [[Char]] -> IO ()        
 parseArgs ("run":xs)  = runMD5db $ last xs
-parseArgs ("find":xs) = printUsage
 parseArgs ("md5":s)   = B.putStrLn $ showMD5 s
 parseArgs _           = printUsage
 
@@ -54,7 +53,6 @@ printUsage            :: IO ()
 printUsage            = putStrLn ( "usage: md5db [OPTION] {ARG}\n" ++
                                    "OPTIONS:\n" ++
                                    "  run <file>        run md5db on the given wordfile\n" ++
-                                   "  find <str> <file> find <str> in the md5db <file>\n"  ++
                                    "  md5 <str>         return the md5 of <str>" )
 
 -- Main execution

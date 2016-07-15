@@ -1,8 +1,8 @@
 md5db
 ======
 
-Creates a database of md5 hashes from a word list. Allows you to find the strings
-based off a hash as well.
+Creates a database of md5 hashes from a word list. My purpose behind creating this was
+I needed a list of md5 hashes from a word file. 
 
 ### Word lists
 Put each word on its own line.
