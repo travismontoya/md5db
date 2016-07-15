@@ -1,3 +1,8 @@
+----------------------------------------------------------------------------------------------
+-- md5db.hs - Creates databases of md5 hashes from a word file, allows searching for hashes.
+-- July, 15th, 2016
+-- Copyright (C) 2016 Travis Montoya
+----------------------------------------------------------------------------------------------
 module Main where
 
 import qualified Data.ByteString.Lazy.Char8 as LB8 (pack)
@@ -7,7 +12,6 @@ import Data.Char (ord)
 import Crypto.Hash
 import System.Environment (getArgs)
 import System.IO
-
 
 md5Str                :: [Char] -> Digest MD5
 md5Str s              = hashlazy $ LB8.pack s
