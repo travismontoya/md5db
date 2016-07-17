@@ -19,7 +19,7 @@ md5Str                :: [Char] -> Digest MD5
 md5Str s              = hashlazy $ LB8.pack s
 
 showMD5               :: [[Char]] -> Data.ByteString.Internal.ByteString
-showMD5 s             = digestToHexByteString $ md5Str $ last s
+showMD5 s             = digestToHexByteString . md5Str $ last s
 
 ----------------------------------------------------------------------------------------------
 -- 
