@@ -36,7 +36,7 @@ runMD5db f            = do withFile f ReadMode (\wf -> do
                               saveDB md5s)
 
 saveDB                :: [([Char], Digest MD5)] -> IO ()
-saveDB m              = do withFile "md5db" WriteMode (\db -> do
+saveDB m              = do withFile "md5db.db" WriteMode (\db -> do
                               sequence_ [hPutStrLn db (x ++ ":" ++ show y) | (x, y) <- m])
 
 ----------------------------------------------------------------------------------------------
