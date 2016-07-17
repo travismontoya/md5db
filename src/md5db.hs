@@ -57,5 +57,4 @@ printUsage            = putStrLn ( "usage: md5db [OPTION] {ARG}\n" ++
 
 -- Main execution
 main                  :: IO ()
-main                  = do args <- getArgs
-                           parseArgs args
+main                  = getArgs >>= parseArgs
