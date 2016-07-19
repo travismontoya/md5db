@@ -21,4 +21,4 @@ Put each word on its own line.
 
 ### MD5 DB
 This will later be moved over to sqlite, but for now the file is saved in the format
-of "string:md5" with a new line seperating each one.
+of "string:md5" with a new line separating each one.
