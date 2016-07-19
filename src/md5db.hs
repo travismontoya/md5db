@@ -16,10 +16,10 @@ import System.Environment (getArgs)
 import System.IO
 
 md5Str                :: [Char] -> Digest MD5
-md5Str s              = hashlazy $ LB8.pack s
+md5Str                = hashlazy . LB8.pack
 
 showMD5               :: [[Char]] -> Data.ByteString.Internal.ByteString
-showMD5 s             = digestToHexByteString . md5Str $ last s
+showMD5               = digestToHexByteString . md5Str . last 
 
 ----------------------------------------------------------------------------------------------
 -- 
@@ -36,7 +36,7 @@ runMD5db f            = do withFile f ReadMode (\wf -> do
                               saveDB md5s)
 
 saveDB                :: [([Char], Digest MD5)] -> IO ()
-saveDB m              = do withFile "md5db.db" WriteMode (\db -> do
+saveDB m              = withFile "md5db.db" WriteMode (\db -> do
                               sequence_ [hPutStrLn db (x ++ ":" ++ show y) | (x, y) <- m])
 
 ----------------------------------------------------------------------------------------------
@@ -45,8 +45,8 @@ saveDB m              = do withFile "md5db.db" WriteMode (\db -> do
 --
 ----------------------------------------------------------------------------------------------
 parseArgs             :: [[Char]] -> IO ()        
-parseArgs ("run":s)   = runMD5db $ last s
-parseArgs ("md5":s)   = B.putStrLn $ showMD5 s
+parseArgs ("run":s)   = runMD5db   . last    $ s
+parseArgs ("md5":s)   = B.putStrLn . showMD5 $ s
 parseArgs _           = printUsage
 
 printUsage            :: IO ()
