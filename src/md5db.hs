@@ -27,13 +27,13 @@ showMD5               = digestToHexByteString . md5Str . last
 --
 ----------------------------------------------------------------------------------------------
 runMD5db              :: FilePath -> IO ()
-runMD5db f            = do withFile f ReadMode (\wf -> do
-                              putStrLn "Running.. This can take awhile!"
-                              w        <- hGetContents wf
-                              let md5s = zip (lines w) hashedWords
-                                   where hashedWords = map md5Str (lines w)
-                              putStrLn ("Saving database...")
-                              saveDB md5s)
+runMD5db f            = withFile f ReadMode (\wf -> do
+                           putStrLn "Running.. This can take awhile!"
+                           w        <- hGetContents wf
+                           let md5s = zip (lines w) hashedWords
+                                where hashedWords = map md5Str (lines w)
+                           putStrLn ("Saving database...")
+                           saveDB md5s)
 
 saveDB                :: [([Char], Digest MD5)] -> IO ()
 saveDB m              = withFile "md5db.db" WriteMode (\db -> do
