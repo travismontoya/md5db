@@ -20,5 +20,5 @@ or to run it without cabal
 Put each word on its own line.
 
 ### MD5 DB
-This will later be moved over to sqlite, but for now the file is saved in the format
-of "string:md5" with a new line separating each one.
+This will later be moved over to sqlite, but for now the file is a csv saved in the format
+of "string,md5" with a new line separating each one.
